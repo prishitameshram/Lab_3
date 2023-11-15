@@ -35,7 +35,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 app.delete('/delete/:filename', (req, res) => {
   const filename = req.params.filename;
-  const filePath = path.join('/tmp', filename); // Update the path to /tmp
+  const filePath = path.join(process.env.TEMP_DIR || '/tmp', filename); // Update the path to /tmp
 
   try {
     fs.unlinkSync(filePath);
