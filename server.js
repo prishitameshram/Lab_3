@@ -2,15 +2,11 @@ const express = require('express');
 const multer = require('multer');
 const fs = require('fs');
 const admin = require('firebase-admin');
-const serviceAccount = require('./path/to/your/serviceAccountKey.json');
+const serviceAccount = require('./lab3-752e1-firebase-adminsdk-uyg6u-885eb2cec1.json'); // Update the filename
 
-const app = express();
-const port = process.env.PORT || 3000;
-
-// Initialize Firebase
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: 'gs://lab3-752e1.appspot.com/',
+  databaseURL: 'https://lab3-752e1.firebaseio.com', // Update with your Firebase project URL
 });
 
 const bucket = admin.storage().bucket();
